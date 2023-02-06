@@ -35,6 +35,13 @@ const Notes = () => {
     }
   };
 
+  const deleteNotes = () => {
+    const nonDeletedNotes = notes.filter(
+      note => !selectedNoteIds.includes(note.id)
+    );
+    setNotes(nonDeletedNotes);
+  };
+
   if (loading) {
     return <PageLoader />;
   }
@@ -92,10 +99,10 @@ const Notes = () => {
       />
       {showDeleteAlert && (
         <DeleteAlert
-          refetch={fetchNotes}
           selectedNoteIds={selectedNoteIds}
           setSelectedNoteIds={setSelectedNoteIds}
           onClose={() => setShowDeleteAlert(false)}
+          onDeleteNotes={deleteNotes}
         />
       )}
     </Container>
