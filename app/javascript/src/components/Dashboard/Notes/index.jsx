@@ -8,6 +8,7 @@ import { Container, Header, SubHeader } from "neetoui/layouts";
 import notesApi from "apis/notes";
 import EmptyState from "components/commons/EmptyState";
 
+import { NOTES_TABLE_ROW_DATA } from "./constants";
 import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./Pane/Create";
 import Table from "./Table";
@@ -21,7 +22,8 @@ const Notes = () => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    fetchNotes();
+    setNotes(NOTES_TABLE_ROW_DATA);
+    setLoading(false);
   }, []);
 
   const fetchNotes = async () => {
