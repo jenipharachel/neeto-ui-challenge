@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { Delete } from "neetoicons";
@@ -14,17 +14,12 @@ import NewNotePane from "./Pane/Create";
 import Table from "./Table";
 
 const Notes = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
-  const [notes, setNotes] = useState([]);
-
-  useEffect(() => {
-    setNotes(NOTES_TABLE_ROW_DATA);
-    setLoading(false);
-  }, []);
+  const [notes, setNotes] = useState(NOTES_TABLE_ROW_DATA);
 
   const fetchNotes = async () => {
     try {
