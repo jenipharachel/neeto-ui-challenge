@@ -24,3 +24,34 @@ export const NOTES_TABLE_COLUMN_DATA = [
     width: "70%",
   },
 ];
+
+export const NOTES_TABLE_ROW_DATA = [
+  {
+    id: 1,
+    key: 1,
+    title: "How to claim the warranty?",
+    description:
+      '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+  },
+  {
+    id: 2,
+    key: 2,
+    title: "How to claim the warranty?",
+    description:
+      '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+  },
+  {
+    id: 3,
+    key: 3,
+    title: "How to claim the warranty?",
+    description:
+      '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+  },
+  {
+    id: 4,
+    key: 4,
+    title: "How to claim the warranty?",
+    description:
+      '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+  },
+];

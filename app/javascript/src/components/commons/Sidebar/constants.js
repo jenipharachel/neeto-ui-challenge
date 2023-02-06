@@ -1,6 +1,6 @@
-import { Notes, Settings } from "neetoicons";
+import { ContactBook, Notes, Settings } from "neetoicons";
 
-export const APP_NAME = "Wheel";
+export const APP_NAME = "NeetoUIChallenge";
 
 export const PASSWORD_PATH = "/my/password/edit";
 export const PROFILE_PATH = "/my/profile";
@@ -11,6 +11,11 @@ export const SIDENAV_LINKS = [
     label: "Notes",
     to: "/notes",
     icon: Notes,
+  },
+  {
+    label: "Contacts",
+    to: "/contacts",
+    icon: ContactBook,
   },
   {
     label: "Settings",
