@@ -2,8 +2,9 @@ import React, { useState } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { Delete } from "neetoicons";
-import { Button, PageLoader } from "neetoui";
+import { Button, PageLoader, Toastr } from "neetoui";
 import { Container, Header, SubHeader } from "neetoui/layouts";
+import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/commons/EmptyState";
@@ -20,6 +21,7 @@ const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState(NOTES_TABLE_ROW_DATA);
+  const { t } = useTranslation();
 
   const fetchNotes = async () => {
     try {
@@ -33,6 +35,16 @@ const Notes = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const deleteNotes = () => {
+    const nonDeletedNotes = notes.filter(
+      note => !selectedNoteIds.includes(note.id)
+    );
+    setNotes(nonDeletedNotes);
+    Toastr.success(
+      t("note.delete.successWithCount", { count: selectedNoteIds.length })
+    );
   };
 
   if (loading) {
@@ -92,10 +104,10 @@ const Notes = () => {
       />
       {showDeleteAlert && (
         <DeleteAlert
-          refetch={fetchNotes}
           selectedNoteIds={selectedNoteIds}
           setSelectedNoteIds={setSelectedNoteIds}
           onClose={() => setShowDeleteAlert(false)}
+          onDeleteNotes={deleteNotes}
         />
       )}
     </Container>

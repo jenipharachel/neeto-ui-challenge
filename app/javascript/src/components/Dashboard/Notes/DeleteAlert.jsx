@@ -2,11 +2,9 @@ import React, { useState } from "react";
 
 import { Alert } from "neetoui";
 
-import notesApi from "apis/notes";
-
 const DeleteAlert = ({
-  refetch,
   onClose,
+  onDeleteNotes,
   selectedNoteIds,
   setSelectedNoteIds,
 }) => {
@@ -15,10 +13,9 @@ const DeleteAlert = ({
   const handleDelete = async () => {
     try {
       setDeleting(true);
-      await notesApi.destroy({ ids: selectedNoteIds });
+      onDeleteNotes();
       onClose();
       setSelectedNoteIds([]);
-      refetch();
     } catch (error) {
       logger.error(error);
       setDeleting(false);

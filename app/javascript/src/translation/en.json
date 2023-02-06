@@ -1,0 +1,8 @@
+{
+  "note": {
+    "delete": {
+      "successWithCount_one": "{{count}} note is deleted successfully!",
+      "successWithCount_other": "{{count}} notes was deleted successfully!"
+    }
+  }
+}
