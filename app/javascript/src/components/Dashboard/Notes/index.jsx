@@ -21,6 +21,7 @@ const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState(NOTES_TABLE_ROW_DATA);
+
   const { t } = useTranslation();
 
   const fetchNotes = async () => {
