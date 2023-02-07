@@ -5,11 +5,10 @@ import { Container, Header, Scrollable } from "@bigbinary/neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import DeleteAlert from "components/commons/DeleteAlert";
+import MenuBar from "components/commons/MenuBar";
 
 import { TABLE_ROW_DATA, MENU_BAR_OPTIONS } from "./constants";
 import Table from "./Table";
-
-import MenuBar from "../../commons/MenuBar";
 
 const Contacts = () => {
   const [showMenu, setShowMenu] = useState(false);
