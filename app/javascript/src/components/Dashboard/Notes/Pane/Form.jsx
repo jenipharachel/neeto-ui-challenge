@@ -1,22 +1,39 @@
 import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
-import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Button, Pane, Toastr } from "neetoui";
+import { Input, Textarea, Select } from "neetoui/formik";
+import * as R from "ramda";
+import { useTranslation } from "react-i18next";
 
-import notesApi from "apis/notes";
+import {
+  NOTES_FORM_VALIDATION_SCHEMA,
+  CONTACT_SELECT_OPTIONS,
+  TAG_SELECT_OPTIONS,
+} from "../constants";
 
-import { NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
+const Form = ({ onClose, note, isEdit, createNewNote, updateEditNote }) => {
+  const { t } = useTranslation();
 
-const Form = ({ onClose, refetch, note, isEdit }) => {
   const handleSubmit = async values => {
     try {
       if (isEdit) {
-        await notesApi.update(note.id, values);
+        updateEditNote(prevNotes => {
+          const filteredNotes = R.reject(
+            prevNote => prevNote.id === note.id,
+            prevNotes
+          );
+
+          return [...filteredNotes, { ...values, id: note.id }];
+        });
+        Toastr.success(t("note.update.success"));
       } else {
-        await notesApi.create(values);
+        createNewNote(prevNotes => [
+          ...prevNotes,
+          { ...values, id: prevNotes.length + 1 },
+        ]);
+        Toastr.success(t("note.create.success"));
       }
-      refetch();
       onClose();
     } catch (err) {
       logger.error(err);
@@ -37,13 +54,32 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               className="w-full flex-grow-0"
               label="Title"
               name="title"
+              placeholder="Enter note title"
             />
             <Textarea
               required
               className="w-full flex-grow-0"
               label="Description"
               name="description"
+              placeholder="Enter note description"
               rows={8}
+            />
+            <Select
+              required
+              className="w-full flex-grow-0"
+              label="Assigned Contact"
+              name="contact"
+              options={CONTACT_SELECT_OPTIONS}
+              placeholder="Select Contact"
+            />
+            <Select
+              isMulti
+              required
+              className="w-full flex-grow-0"
+              label="Tags"
+              name="tags"
+              options={TAG_SELECT_OPTIONS}
+              placeholder="Select Tags"
             />
           </Pane.Body>
           <Pane.Footer>

@@ -21,6 +21,7 @@ const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState(NOTES_TABLE_ROW_DATA);
+
   const { t } = useTranslation();
 
   const fetchNotes = async () => {
@@ -86,6 +87,7 @@ const Notes = () => {
             notes={notes}
             selectedNoteIds={selectedNoteIds}
             setSelectedNoteIds={setSelectedNoteIds}
+            updateEditNote={setNotes}
           />
         </>
       ) : (
@@ -98,7 +100,7 @@ const Notes = () => {
         />
       )}
       <NewNotePane
-        fetchNotes={fetchNotes}
+        createNewNote={setNotes}
         setShowPane={setShowNewNotePane}
         showPane={showNewNotePane}
       />
