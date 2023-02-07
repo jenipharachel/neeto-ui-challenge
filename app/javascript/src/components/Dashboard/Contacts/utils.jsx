@@ -25,11 +25,13 @@ export const renderText = text => (
   </Typography>
 );
 
-export const renderDropdown = () => (
+export const renderDropdown = ({ onDeleteContact, id }) => (
   <Dropdown buttonStyle="text" icon={MenuHorizontal}>
     <Menu>
       <MenuItem.Button>Edit</MenuItem.Button>
-      <MenuItem.Button style="danger">Delete</MenuItem.Button>
+      <MenuItem.Button style="danger" onClick={() => onDeleteContact(id)}>
+        Delete
+      </MenuItem.Button>
     </Menu>
   </Dropdown>
 );
