@@ -1,4 +1,4 @@
-export const CONTACTS_TABLE_ROW_DATA = [
+export const TABLE_ROW_DATA = [
   {
     id: 1,
     name_and_role: {

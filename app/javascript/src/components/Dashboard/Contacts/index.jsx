@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import DeleteAlert from "components/commons/DeleteAlert";
 
-import { CONTACTS_TABLE_ROW_DATA, MENU_BAR_OPTIONS } from "./constants";
+import { TABLE_ROW_DATA, MENU_BAR_OPTIONS } from "./constants";
 import Table from "./Table";
 
 import MenuBar from "../../commons/MenuBar";
@@ -14,7 +14,7 @@ import MenuBar from "../../commons/MenuBar";
 const Contacts = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [searchString, setSearchString] = useState("");
-  const [contacts, setContacts] = useState(CONTACTS_TABLE_ROW_DATA);
+  const [contacts, setContacts] = useState(TABLE_ROW_DATA);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [selectedContactId, setSelectedContactId] = useState(null);
 

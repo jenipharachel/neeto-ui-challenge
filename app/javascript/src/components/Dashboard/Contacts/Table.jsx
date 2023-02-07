@@ -7,7 +7,7 @@ import { renderContactDetails, renderText, renderDropdown } from "./utils";
 const Table = ({ contacts = [], onDeleteContact }) => {
   const [pageNumber, setPageNumber] = useState(1);
 
-  const CONTACTS_TABLE_COLUMN_DATA = [
+  const COLUMN_DATA = [
     {
       title: "Name & Role",
       dataIndex: "name_and_role",
@@ -43,7 +43,7 @@ const Table = ({ contacts = [], onDeleteContact }) => {
       allowRowClick
       fixedHeight
       rowSelection
-      columnData={CONTACTS_TABLE_COLUMN_DATA}
+      columnData={COLUMN_DATA}
       currentPageNumber={pageNumber}
       defaultPageSize={10}
       handlePageChange={page => setPageNumber(page)}

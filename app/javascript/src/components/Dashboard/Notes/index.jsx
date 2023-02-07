@@ -10,7 +10,7 @@ import notesApi from "apis/notes";
 import DeleteAlert from "components/commons/DeleteAlert";
 import EmptyState from "components/commons/EmptyState";
 
-import { NOTES_TABLE_ROW_DATA } from "./constants";
+import { TABLE_ROW_DATA } from "./constants";
 import NewNotePane from "./Pane/Create";
 import Table from "./Table";
 
@@ -20,7 +20,7 @@ const Notes = () => {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
-  const [notes, setNotes] = useState(NOTES_TABLE_ROW_DATA);
+  const [notes, setNotes] = useState(TABLE_ROW_DATA);
 
   const { t } = useTranslation();
 
