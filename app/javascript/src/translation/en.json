@@ -10,5 +10,10 @@
     "update": {
       "success": "Note has been updated successfully"
     }
+  },
+  "contact": {
+    "delete": {
+      "success": "Contact has been deleted successfully!"
+    }
   }
 }
