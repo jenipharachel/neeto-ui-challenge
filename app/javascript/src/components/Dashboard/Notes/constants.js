@@ -16,7 +16,7 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .min(1, "Tags is required"),
 });
 
-export const NOTES_TABLE_COLUMN_DATA = [
+export const TABLE_COLUMN_DATA = [
   {
     title: "Title",
     dataIndex: "title",
@@ -31,7 +31,7 @@ export const NOTES_TABLE_COLUMN_DATA = [
   },
 ];
 
-export const NOTES_TABLE_ROW_DATA = [
+export const TABLE_ROW_DATA = [
   {
     id: 1,
     title: "How to claim the warranty?",

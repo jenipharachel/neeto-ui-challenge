@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Table as NeetoUITable } from "neetoui";
 
-import { NOTES_TABLE_COLUMN_DATA } from "./constants";
+import { TABLE_COLUMN_DATA } from "./constants";
 import EditNotePane from "./Pane/Edit";
 
 const Table = ({
@@ -20,7 +20,7 @@ const Table = ({
         <NeetoUITable
           allowRowClick
           rowSelection
-          columnData={NOTES_TABLE_COLUMN_DATA}
+          columnData={TABLE_COLUMN_DATA}
           rowData={notes}
           selectedRowKeys={selectedNoteIds}
           onRowSelect={selectedRowKeys => setSelectedNoteIds(selectedRowKeys)}

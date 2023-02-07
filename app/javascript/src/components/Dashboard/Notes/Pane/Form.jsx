@@ -3,7 +3,6 @@ import React from "react";
 import { Formik, Form as FormikForm } from "formik";
 import { Button, Pane, Toastr } from "neetoui";
 import { Input, Textarea, Select } from "neetoui/formik";
-import * as R from "ramda";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -19,9 +18,8 @@ const Form = ({ onClose, note, isEdit, createNewNote, updateEditNote }) => {
     try {
       if (isEdit) {
         updateEditNote(prevNotes => {
-          const filteredNotes = R.reject(
-            prevNote => prevNote.id === note.id,
-            prevNotes
+          const filteredNotes = prevNotes.filter(
+            prevNote => prevNote.id !== note.id
           );
 
           return [...filteredNotes, { ...values, id: note.id }];
