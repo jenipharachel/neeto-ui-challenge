@@ -7,10 +7,10 @@ import { Container, Header, SubHeader } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
+import DeleteAlert from "components/commons/DeleteAlert";
 import EmptyState from "components/commons/EmptyState";
 
 import { NOTES_TABLE_ROW_DATA } from "./constants";
-import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./Pane/Create";
 import Table from "./Table";
 
@@ -106,10 +106,10 @@ const Notes = () => {
       />
       {showDeleteAlert && (
         <DeleteAlert
-          selectedNoteIds={selectedNoteIds}
-          setSelectedNoteIds={setSelectedNoteIds}
+          entity="Note"
+          setSelectedIds={setSelectedNoteIds}
           onClose={() => setShowDeleteAlert(false)}
-          onDeleteNotes={deleteNotes}
+          onDelete={deleteNotes}
         />
       )}
     </Container>
