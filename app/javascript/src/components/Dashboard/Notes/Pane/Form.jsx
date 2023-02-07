@@ -2,12 +2,16 @@ import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
 import { Button, Pane, Toastr } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Input, Textarea, Select } from "neetoui/formik";
 import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
 
-import { NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
+import {
+  NOTES_FORM_VALIDATION_SCHEMA,
+  CONTACT_SELECT_OPTIONS,
+  TAG_SELECT_OPTIONS,
+} from "../constants";
 
 const Form = ({ onClose, refetch, note, isEdit, createNewNote }) => {
   const { t } = useTranslation();
@@ -44,13 +48,32 @@ const Form = ({ onClose, refetch, note, isEdit, createNewNote }) => {
               className="w-full flex-grow-0"
               label="Title"
               name="title"
+              placeholder="Enter note title"
             />
             <Textarea
               required
               className="w-full flex-grow-0"
               label="Description"
               name="description"
+              placeholder="Enter note description"
               rows={8}
+            />
+            <Select
+              required
+              className="w-full flex-grow-0"
+              label="Assigned Contact"
+              name="contact"
+              options={CONTACT_SELECT_OPTIONS}
+              placeholder="Select Contact"
+            />
+            <Select
+              isMulti
+              required
+              className="w-full flex-grow-0"
+              label="Tags"
+              name="tags"
+              options={TAG_SELECT_OPTIONS}
+              placeholder="Select Tags"
             />
           </Pane.Body>
           <Pane.Footer>
