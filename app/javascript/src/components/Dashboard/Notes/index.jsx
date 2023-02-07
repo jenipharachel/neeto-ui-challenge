@@ -99,6 +99,7 @@ const Notes = () => {
         />
       )}
       <NewNotePane
+        createNewNote={setNotes}
         fetchNotes={fetchNotes}
         setShowPane={setShowNewNotePane}
         showPane={showNewNotePane}

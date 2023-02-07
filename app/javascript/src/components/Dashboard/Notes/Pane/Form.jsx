@@ -1,22 +1,29 @@
 import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
-import { Button, Pane } from "neetoui";
+import { Button, Pane, Toastr } from "neetoui";
 import { Input, Textarea } from "neetoui/formik";
+import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
 
 import { NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
 
-const Form = ({ onClose, refetch, note, isEdit }) => {
+const Form = ({ onClose, refetch, note, isEdit, createNewNote }) => {
+  const { t } = useTranslation();
+
   const handleSubmit = async values => {
     try {
       if (isEdit) {
         await notesApi.update(note.id, values);
+        refetch();
       } else {
-        await notesApi.create(values);
+        createNewNote(prevNotes => [
+          ...prevNotes,
+          { ...values, id: prevNotes.length + 1 },
+        ]);
+        Toastr.success(t("note.create.success"));
       }
-      refetch();
       onClose();
     } catch (err) {
       logger.error(err);
