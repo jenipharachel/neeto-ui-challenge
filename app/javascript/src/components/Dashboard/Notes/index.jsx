@@ -87,6 +87,7 @@ const Notes = () => {
             notes={notes}
             selectedNoteIds={selectedNoteIds}
             setSelectedNoteIds={setSelectedNoteIds}
+            updateEditNote={setNotes}
           />
         </>
       ) : (
@@ -100,7 +101,6 @@ const Notes = () => {
       )}
       <NewNotePane
         createNewNote={setNotes}
-        fetchNotes={fetchNotes}
         setShowPane={setShowNewNotePane}
         showPane={showNewNotePane}
       />

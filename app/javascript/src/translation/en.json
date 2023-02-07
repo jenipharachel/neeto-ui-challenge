@@ -6,6 +6,9 @@
     },
     "create": {
       "success": "Note has been added successfully"
+    },
+    "update": {
+      "success": "Note has been updated successfully"
     }
   }
 }

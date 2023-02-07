@@ -9,7 +9,7 @@ const Table = ({
   selectedNoteIds,
   setSelectedNoteIds,
   notes = [],
-  fetchNotes,
+  updateEditNote,
 }) => {
   const [showEditNote, setShowEditNote] = useState(false);
   const [selectedNote, setSelectedNote] = useState({});
@@ -31,10 +31,10 @@ const Table = ({
         />
       </div>
       <EditNotePane
-        fetchNotes={fetchNotes}
         note={selectedNote}
         setShowPane={setShowEditNote}
         showPane={showEditNote}
+        updateEditNote={updateEditNote}
       />
     </>
   );

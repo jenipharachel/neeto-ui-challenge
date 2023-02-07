@@ -3,9 +3,8 @@ import React from "react";
 import { Formik, Form as FormikForm } from "formik";
 import { Button, Pane, Toastr } from "neetoui";
 import { Input, Textarea, Select } from "neetoui/formik";
+import * as R from "ramda";
 import { useTranslation } from "react-i18next";
-
-import notesApi from "apis/notes";
 
 import {
   NOTES_FORM_VALIDATION_SCHEMA,
@@ -13,14 +12,21 @@ import {
   TAG_SELECT_OPTIONS,
 } from "../constants";
 
-const Form = ({ onClose, refetch, note, isEdit, createNewNote }) => {
+const Form = ({ onClose, note, isEdit, createNewNote, updateEditNote }) => {
   const { t } = useTranslation();
 
   const handleSubmit = async values => {
     try {
       if (isEdit) {
-        await notesApi.update(note.id, values);
-        refetch();
+        updateEditNote(prevNotes => {
+          const filteredNotes = R.reject(
+            prevNote => prevNote.id === note.id,
+            prevNotes
+          );
+
+          return [...filteredNotes, { ...values, id: note.id }];
+        });
+        Toastr.success(t("note.update.success"));
       } else {
         createNewNote(prevNotes => [
           ...prevNotes,
