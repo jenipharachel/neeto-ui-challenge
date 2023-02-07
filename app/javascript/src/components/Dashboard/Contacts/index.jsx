@@ -6,9 +6,10 @@ import { useTranslation } from "react-i18next";
 
 import DeleteAlert from "components/commons/DeleteAlert";
 
-import { CONTACTS_TABLE_ROW_DATA } from "./constants";
-import MenuBar from "./MenuBar";
+import { CONTACTS_TABLE_ROW_DATA, MENU_BAR_OPTIONS } from "./constants";
 import Table from "./Table";
+
+import MenuBar from "../../commons/MenuBar";
 
 const Contacts = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -34,7 +35,7 @@ const Contacts = () => {
 
   return (
     <div className="max-w-fit flex">
-      <MenuBar showMenu={showMenu} />
+      <MenuBar menuBarOptions={MENU_BAR_OPTIONS} showMenu={showMenu} />
       <Container>
         <Header
           menuBarToggle={() => setShowMenu(!showMenu)}

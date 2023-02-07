@@ -4,15 +4,19 @@ import { Plus, Search, Settings } from "@bigbinary/neeto-icons";
 import { Typography } from "@bigbinary/neetoui";
 import { MenuBar as NeetoUIMenuBar } from "@bigbinary/neetoui/layouts";
 
-const MenuBar = ({ showMenu }) => {
+const MenuBar = ({ showMenu, menuBarOptions }) => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
 
   return (
-    <NeetoUIMenuBar showMenu={showMenu} title="Contacts">
-      <NeetoUIMenuBar.Block active count={0} label="All" />
-      <NeetoUIMenuBar.Block count={0} label="Archived" />
-      <NeetoUIMenuBar.Block count={0} label="Completed" />
-      <NeetoUIMenuBar.Block count={0} label="Phase 2" />
+    <NeetoUIMenuBar showMenu={showMenu} title={menuBarOptions.title}>
+      {menuBarOptions.blocks.map((block, id) => (
+        <NeetoUIMenuBar.Block
+          active={block.active}
+          count={block.count}
+          key={id}
+          label={block.label}
+        />
+      ))}
       <NeetoUIMenuBar.SubTitle
         iconProps={[
           {

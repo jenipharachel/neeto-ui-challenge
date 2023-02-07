@@ -144,3 +144,26 @@ export const CONTACTS_TABLE_ROW_DATA = [
     created_at: "Feb, 5, 2021",
   },
 ];
+
+export const MENU_BAR_OPTIONS = {
+  title: "Contacts",
+  blocks: [
+    {
+      label: "All",
+      count: 0,
+      active: true,
+    },
+    {
+      label: "Archived",
+      count: 0,
+    },
+    {
+      label: "Completed",
+      count: 0,
+    },
+    {
+      label: "Phase 2",
+      count: 0,
+    },
+  ],
+};
