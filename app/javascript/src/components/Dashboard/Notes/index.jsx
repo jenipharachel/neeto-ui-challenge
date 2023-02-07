@@ -9,8 +9,9 @@ import { useTranslation } from "react-i18next";
 import notesApi from "apis/notes";
 import DeleteAlert from "components/commons/DeleteAlert";
 import EmptyState from "components/commons/EmptyState";
+import MenuBar from "components/commons/MenuBar";
 
-import { TABLE_ROW_DATA } from "./constants";
+import { MENU_BAR_OPTIONS, TABLE_ROW_DATA } from "./constants";
 import NewNotePane from "./Pane/Create";
 import Table from "./Table";
 
@@ -21,6 +22,7 @@ const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState(TABLE_ROW_DATA);
+  const [showMenu, setShowMenu] = useState(false);
 
   const { t } = useTranslation();
 
@@ -53,66 +55,71 @@ const Notes = () => {
   }
 
   return (
-    <Container>
-      <Header
-        title="Notes"
-        actionBlock={
-          <Button
-            icon="ri-add-line"
-            label="Add new note"
-            size="small"
-            onClick={() => setShowNewNotePane(true)}
-          />
-        }
-        searchProps={{
-          value: searchTerm,
-          onChange: e => setSearchTerm(e.target.value),
-        }}
-      />
-      {notes.length ? (
-        <>
-          <SubHeader
-            rightActionBlock={
-              <Button
-                disabled={!selectedNoteIds.length}
-                icon={Delete}
-                label="Delete"
-                size="small"
-                onClick={() => setShowDeleteAlert(true)}
-              />
-            }
-          />
-          <Table
-            fetchNotes={fetchNotes}
-            notes={notes}
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
-            updateEditNote={setNotes}
-          />
-        </>
-      ) : (
-        <EmptyState
-          image={EmptyNotesListImage}
-          primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel="Add new note"
-          subtitle="Add your notes to send customized emails to them."
-          title="Looks like you don't have any notes!"
+    <div className="max-w-fit flex">
+      <MenuBar menuBarOptions={MENU_BAR_OPTIONS} showMenu={showMenu} />
+      <Container>
+        <Header
+          menuBarToggle={() => setShowMenu(!showMenu)}
+          title="All Notes"
+          actionBlock={
+            <Button
+              icon="ri-add-line"
+              label="Add new note"
+              size="small"
+              onClick={() => setShowNewNotePane(true)}
+            />
+          }
+          searchProps={{
+            value: searchTerm,
+            onChange: e => setSearchTerm(e.target.value),
+            placeholder: "Search Name, Email, Phone Number, Ect.",
+          }}
         />
-      )}
-      <NewNotePane
-        createNewNote={setNotes}
-        setShowPane={setShowNewNotePane}
-        showPane={showNewNotePane}
-      />
-      {showDeleteAlert && (
-        <DeleteAlert
-          entity="Note"
-          setSelectedIds={setSelectedNoteIds}
-          onClose={() => setShowDeleteAlert(false)}
-          onDelete={deleteNotes}
+        {notes.length ? (
+          <>
+            <SubHeader
+              rightActionBlock={
+                <Button
+                  disabled={!selectedNoteIds.length}
+                  icon={Delete}
+                  label="Delete"
+                  size="small"
+                  onClick={() => setShowDeleteAlert(true)}
+                />
+              }
+            />
+            <Table
+              fetchNotes={fetchNotes}
+              notes={notes}
+              selectedNoteIds={selectedNoteIds}
+              setSelectedNoteIds={setSelectedNoteIds}
+              updateEditNote={setNotes}
+            />
+          </>
+        ) : (
+          <EmptyState
+            image={EmptyNotesListImage}
+            primaryAction={() => setShowNewNotePane(true)}
+            primaryActionLabel="Add new note"
+            subtitle="Add your notes to send customized emails to them."
+            title="Looks like you don't have any notes!"
+          />
+        )}
+        <NewNotePane
+          createNewNote={setNotes}
+          setShowPane={setShowNewNotePane}
+          showPane={showNewNotePane}
         />
-      )}
-    </Container>
+        {showDeleteAlert && (
+          <DeleteAlert
+            entity="Note"
+            setSelectedIds={setSelectedNoteIds}
+            onClose={() => setShowDeleteAlert(false)}
+            onDelete={deleteNotes}
+          />
+        )}
+      </Container>
+    </div>
   );
 };
 

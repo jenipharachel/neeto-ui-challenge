@@ -35,6 +35,13 @@ const MenuBar = ({ showMenu, menuBarOptions }) => {
           Segments
         </Typography>
       </NeetoUIMenuBar.SubTitle>
+      {menuBarOptions.segments?.map((segment, id) => (
+        <NeetoUIMenuBar.Block
+          count={segment.count}
+          key={id}
+          label={segment.label}
+        />
+      ))}
       <NeetoUIMenuBar.Search
         collapse={isSearchCollapsed}
         onCollapse={() => setIsSearchCollapsed(true)}
@@ -61,6 +68,13 @@ const MenuBar = ({ showMenu, menuBarOptions }) => {
           Tags
         </Typography>
       </NeetoUIMenuBar.SubTitle>
+      {menuBarOptions.tags?.map((segment, id) => (
+        <NeetoUIMenuBar.Block
+          count={segment.count}
+          key={id}
+          label={segment.label}
+        />
+      ))}
     </NeetoUIMenuBar>
   );
 };
