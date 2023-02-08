@@ -48,7 +48,7 @@ const Notes = () => {
       <MenuBar menuBarOptions={MENU_BAR_OPTIONS} showMenu={showMenu} />
       <Container>
         <Header
-          menuBarToggle={() => setShowMenu(!showMenu)}
+          menuBarToggle={() => setShowMenu(prevState => !prevState)}
           title="All Notes"
           actionBlock={
             <Button
