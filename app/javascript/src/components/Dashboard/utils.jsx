@@ -4,8 +4,8 @@ import { Avatar, Dropdown, Typography } from "neetoui";
 
 const { Menu, MenuItem } = Dropdown;
 
-export const renderContactDetails = name_and_role => {
-  const { name, role } = name_and_role;
+export const renderContactDetails = nameAndRole => {
+  const { name, role } = nameAndRole;
 
   return (
     <div className="flex flex-row items-center">
