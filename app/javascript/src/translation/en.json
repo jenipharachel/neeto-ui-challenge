@@ -1,8 +1,7 @@
 {
   "note": {
     "delete": {
-      "successWithCount_one": "Note has been deleted successfully!",
-      "successWithCount_other": "Notes have been deleted successfully!"
+      "success": "Note has been deleted successfully!"
     },
     "create": {
       "success": "Note has been added successfully"

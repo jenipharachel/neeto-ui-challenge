@@ -37,24 +37,28 @@ export const TABLE_ROW_DATA = [
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+    tags: [{ label: "Getting Started", value: "getting_started" }],
   },
   {
     id: 2,
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+    tags: [{ label: "Getting Started", value: "getting_started" }],
   },
   {
     id: 3,
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+    tags: [{ label: "Getting Started", value: "getting_started" }],
   },
   {
     id: 4,
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+    tags: [{ label: "Getting Started", value: "getting_started" }],
   },
 ];
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Alert } from "neetoui";
 
-const DeleteAlert = ({ onClose, onDelete, entity, setSelectedIds }) => {
+const DeleteAlert = ({ onClose, onDelete, entity, setSelectedId }) => {
   const [deleting, setDeleting] = useState(false);
 
   const handleDelete = async () => {
@@ -10,7 +10,7 @@ const DeleteAlert = ({ onClose, onDelete, entity, setSelectedIds }) => {
       setDeleting(true);
       onDelete();
       onClose();
-      setSelectedIds([]);
+      setSelectedId(null);
     } catch (error) {
       logger.error(error);
       setDeleting(false);

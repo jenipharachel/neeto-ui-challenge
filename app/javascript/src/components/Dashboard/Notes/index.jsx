@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Delete } from "neetoicons";
 import { Button, PageLoader, Toastr } from "neetoui";
-import { Container, Header, SubHeader } from "neetoui/layouts";
+import { Container, Header } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
@@ -11,18 +10,18 @@ import DeleteAlert from "components/commons/DeleteAlert";
 import EmptyState from "components/commons/EmptyState";
 import MenuBar from "components/commons/MenuBar";
 
+import Card from "./Card";
 import { MENU_BAR_OPTIONS, TABLE_ROW_DATA } from "./constants";
 import NewNotePane from "./Pane/Create";
-import Table from "./Table";
 
 const Notes = () => {
   const [loading, setLoading] = useState(false);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
+  const [selectedNoteId, setSelectedNoteId] = useState(null);
   const [notes, setNotes] = useState(TABLE_ROW_DATA);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
 
   const { t } = useTranslation();
 
@@ -41,13 +40,14 @@ const Notes = () => {
   };
 
   const deleteNotes = () => {
-    const nonDeletedNotes = notes.filter(
-      note => !selectedNoteIds.includes(note.id)
-    );
+    const nonDeletedNotes = notes.filter(note => note.id !== selectedNoteId);
     setNotes(nonDeletedNotes);
-    Toastr.success(
-      t("note.delete.successWithCount", { count: selectedNoteIds.length })
-    );
+    Toastr.success(t("note.delete.success"));
+  };
+
+  const handleDeleteNote = id => {
+    setSelectedNoteId(id);
+    setShowDeleteAlert(true);
   };
 
   if (loading) {
@@ -77,24 +77,22 @@ const Notes = () => {
         />
         {notes.length ? (
           <>
-            <SubHeader
-              rightActionBlock={
-                <Button
-                  disabled={!selectedNoteIds.length}
-                  icon={Delete}
-                  label="Delete"
-                  size="small"
-                  onClick={() => setShowDeleteAlert(true)}
-                />
-              }
-            />
+            {notes.map(note => (
+              <Card
+                fetchNotes={fetchNotes}
+                key={note.id}
+                note={note}
+                onDelete={handleDeleteNote}
+              />
+            ))}
+            {/*
             <Table
               fetchNotes={fetchNotes}
               notes={notes}
               selectedNoteIds={selectedNoteIds}
               setSelectedNoteIds={setSelectedNoteIds}
               updateEditNote={setNotes}
-            />
+            /> */}
           </>
         ) : (
           <EmptyState
@@ -113,7 +111,7 @@ const Notes = () => {
         {showDeleteAlert && (
           <DeleteAlert
             entity="Note"
-            setSelectedIds={setSelectedNoteIds}
+            setSelectedId={setSelectedNoteId}
             onClose={() => setShowDeleteAlert(false)}
             onDelete={deleteNotes}
           />

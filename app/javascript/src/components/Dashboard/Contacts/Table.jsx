@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { MenuHorizontal } from "@bigbinary/neeto-icons";
 import { Table as NeetoUITable } from "neetoui";
 
 import { renderContactDetails, renderText, renderDropdown } from "./utils";
@@ -34,7 +35,8 @@ const Table = ({ contacts = [], onDeleteContact }) => {
       dataIndex: "icon_button",
       key: "icon_button",
       width: "10%",
-      render: (_, { id }) => renderDropdown({ onDeleteContact, id }),
+      render: (_, { id }) =>
+        renderDropdown({ onDelete: onDeleteContact, id, icon: MenuHorizontal }),
     },
   ];
 

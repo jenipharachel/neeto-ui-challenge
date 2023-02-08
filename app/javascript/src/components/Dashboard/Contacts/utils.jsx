@@ -1,6 +1,5 @@
 import React from "react";
 
-import { MenuHorizontal } from "@bigbinary/neeto-icons";
 import { Avatar, Dropdown, Typography } from "@bigbinary/neetoui";
 
 const { Menu, MenuItem } = Dropdown;
@@ -25,11 +24,11 @@ export const renderText = text => (
   </Typography>
 );
 
-export const renderDropdown = ({ onDeleteContact, id }) => (
-  <Dropdown buttonStyle="text" icon={MenuHorizontal}>
+export const renderDropdown = ({ onDelete, id, icon, buttonProps }) => (
+  <Dropdown buttonProps={buttonProps} buttonStyle="text" icon={icon}>
     <Menu>
       <MenuItem.Button>Edit</MenuItem.Button>
-      <MenuItem.Button style="danger" onClick={() => onDeleteContact(id)}>
+      <MenuItem.Button style="danger" onClick={() => onDelete(id)}>
         Delete
       </MenuItem.Button>
     </Menu>

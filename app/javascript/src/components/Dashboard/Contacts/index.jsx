@@ -60,7 +60,7 @@ const Contacts = () => {
       {showDeleteAlert && (
         <DeleteAlert
           entity="Contact"
-          setSelectedIds={setSelectedContactId}
+          setSelectedId={setSelectedContactId}
           onClose={() => setShowDeleteAlert(false)}
           onDelete={deleteContact}
         />
