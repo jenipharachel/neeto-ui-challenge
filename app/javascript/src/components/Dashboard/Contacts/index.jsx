@@ -56,15 +56,15 @@ const Contacts = () => {
         <Scrollable className="w-full">
           <Table contacts={contacts} onDeleteContact={handleDelete} />
         </Scrollable>
+        {showDeleteAlert && (
+          <DeleteAlert
+            entity="Contact"
+            setSelectedId={setSelectedContactId}
+            onClose={() => setShowDeleteAlert(false)}
+            onDelete={deleteContact}
+          />
+        )}
       </Container>
-      {showDeleteAlert && (
-        <DeleteAlert
-          entity="Contact"
-          setSelectedId={setSelectedContactId}
-          onClose={() => setShowDeleteAlert(false)}
-          onDelete={deleteContact}
-        />
-      )}
     </div>
   );
 };
