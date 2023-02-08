@@ -3,53 +3,29 @@ import React, { useState } from "react";
 import { MenuHorizontal } from "neetoicons";
 import { Table as NeetoUITable } from "neetoui";
 
-import {
-  renderContactDetails,
-  renderText,
-  renderDropdown,
-} from "components/Dashboard/utils";
+import { renderDropdown } from "components/Dashboard/utils";
+
+import { COLUMN_DATA } from "./constants";
 
 const Table = ({ contacts = [], onDeleteContact }) => {
   const [pageNumber, setPageNumber] = useState(1);
 
-  const COLUMN_DATA = [
-    {
-      title: "Name & Role",
-      dataIndex: "name_and_role",
-      key: "name_and_role",
-      width: "30%",
-      render: renderContactDetails,
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-      width: "30%",
-      render: renderText,
-    },
-    {
-      title: "Created At",
-      dataIndex: "created_at",
-      key: "created_at",
-      width: "30%",
-      render: renderText,
-    },
-    {
-      title: "",
-      dataIndex: "icon_button",
-      key: "icon_button",
-      width: "10%",
-      render: (_, { id }) =>
-        renderDropdown({ onDelete: onDeleteContact, id, icon: MenuHorizontal }),
-    },
-  ];
+  const renderIcon = (_, { id }) =>
+    renderDropdown({
+      onDelete: onDeleteContact,
+      onEdit: () => {},
+      id,
+      icon: MenuHorizontal,
+    });
+
+  const columnData = COLUMN_DATA(renderIcon);
 
   return (
     <NeetoUITable
       allowRowClick
       fixedHeight
       rowSelection
-      columnData={COLUMN_DATA}
+      columnData={columnData}
       currentPageNumber={pageNumber}
       defaultPageSize={10}
       handlePageChange={page => setPageNumber(page)}
