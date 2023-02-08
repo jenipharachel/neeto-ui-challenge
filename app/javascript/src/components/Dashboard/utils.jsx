@@ -10,10 +10,12 @@ export const renderContactDetails = name_and_role => {
   return (
     <div className="flex flex-row items-center">
       <Avatar className="mr-2" size="large" user={{ name }} />
-      <div>
+      <span>
         <Typography style="h5">{name}</Typography>
-        <Typography style="body3">{role}</Typography>
-      </div>
+        <Typography className="neeto-ui-text-gray-600" style="body3">
+          {role}
+        </Typography>
+      </span>
     </div>
   );
 };
