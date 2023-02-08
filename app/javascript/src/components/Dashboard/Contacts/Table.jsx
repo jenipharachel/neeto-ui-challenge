@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import { MenuHorizontal } from "neetoicons";
 import { Table as NeetoUITable } from "neetoui";
@@ -9,6 +9,9 @@ import { COLUMN_DATA } from "./constants";
 
 const Table = ({ contacts = [], onDeleteContact }) => {
   const [pageNumber, setPageNumber] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const timeoutRef = useRef(null);
 
   const renderIcon = (_, { id }) =>
     renderDropdown({
@@ -20,16 +23,26 @@ const Table = ({ contacts = [], onDeleteContact }) => {
 
   const columnData = COLUMN_DATA(renderIcon);
 
+  useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timeoutRef.current);
+  }, []);
+
   return (
     <NeetoUITable
-      allowRowClick
       fixedHeight
+      pagination
       rowSelection
       columnData={columnData}
       currentPageNumber={pageNumber}
       defaultPageSize={10}
       handlePageChange={page => setPageNumber(page)}
+      isLoading={isLoading}
       rowData={contacts}
+      totalCount={contacts.length}
     />
   );
 };
