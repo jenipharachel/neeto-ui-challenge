@@ -17,7 +17,7 @@ const Badge = ({ tag, id }) => (
   </div>
 );
 
-const Card = ({ note, onDelete }) => (
+const Card = ({ note, onDelete, onEdit }) => (
   <div className="neeto-ui-bg-white neeto-ui-shadow-xs neeto-ui-border-gray-300 neeto-ui-rounded-sm my-2 w-full border p-4">
     <div className="flex flex-row justify-between">
       <Typography className="neeto-ui-text-gray-800 mb-0.5" style="h4">
@@ -25,6 +25,7 @@ const Card = ({ note, onDelete }) => (
       </Typography>
       {renderDropdown({
         onDelete,
+        onEdit,
         id: note.id,
         icon: MenuVertical,
         buttonProps: { className: "-mt-2" },

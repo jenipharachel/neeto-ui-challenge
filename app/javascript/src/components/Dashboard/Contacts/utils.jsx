@@ -24,10 +24,10 @@ export const renderText = text => (
   </Typography>
 );
 
-export const renderDropdown = ({ onDelete, id, icon, buttonProps }) => (
+export const renderDropdown = ({ onDelete, onEdit, id, icon, buttonProps }) => (
   <Dropdown buttonProps={buttonProps} buttonStyle="text" icon={icon}>
     <Menu>
-      <MenuItem.Button>Edit</MenuItem.Button>
+      <MenuItem.Button onClick={() => onEdit(id)}>Edit</MenuItem.Button>
       <MenuItem.Button style="danger" onClick={() => onDelete(id)}>
         Delete
       </MenuItem.Button>
