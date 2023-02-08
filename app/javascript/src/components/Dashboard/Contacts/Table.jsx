@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
-import { MenuHorizontal } from "@bigbinary/neeto-icons";
+import { MenuHorizontal } from "neetoicons";
 import { Table as NeetoUITable } from "neetoui";
 
-import { renderContactDetails, renderText, renderDropdown } from "./utils";
+import {
+  renderContactDetails,
+  renderText,
+  renderDropdown,
+} from "components/Dashboard/utils";
 
 const Table = ({ contacts = [], onDeleteContact }) => {
   const [pageNumber, setPageNumber] = useState(1);

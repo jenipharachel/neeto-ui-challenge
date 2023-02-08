@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { MenuVertical, Clock } from "neetoicons";
 import { Typography, Tooltip, Avatar } from "neetoui";
 
-import { renderDropdown } from "../Contacts/utils";
+import { renderDropdown } from "components/Dashboard/utils";
 
 const Badge = ({ tag, id }) => (
   <div

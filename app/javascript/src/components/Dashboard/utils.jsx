@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Avatar, Dropdown, Typography } from "@bigbinary/neetoui";
+import { Avatar, Dropdown, Typography } from "neetoui";
 
 const { Menu, MenuItem } = Dropdown;
 

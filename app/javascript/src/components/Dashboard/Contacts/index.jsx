@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { Button, Toastr } from "@bigbinary/neetoui";
-import { Container, Header, Scrollable } from "@bigbinary/neetoui/layouts";
+import { Button, Toastr } from "neetoui";
+import { Container, Header, Scrollable } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import DeleteAlert from "components/commons/DeleteAlert";

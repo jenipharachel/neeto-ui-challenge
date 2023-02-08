@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import { Plus, Search, Settings } from "@bigbinary/neeto-icons";
-import { Typography } from "@bigbinary/neetoui";
-import { MenuBar as NeetoUIMenuBar } from "@bigbinary/neetoui/layouts";
+import { Plus, Search, Settings } from "neetoicons";
+import { Typography } from "neetoui";
+import { MenuBar as NeetoUIMenuBar } from "neetoui/layouts";
 
 const MenuBar = ({ showMenu, menuBarOptions }) => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
