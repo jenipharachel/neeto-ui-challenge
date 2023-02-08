@@ -38,6 +38,7 @@ export const TABLE_ROW_DATA = [
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
     tags: [{ label: "Getting Started", value: "getting_started" }],
+    date: "2023-02-5",
   },
   {
     id: 2,
@@ -45,6 +46,7 @@ export const TABLE_ROW_DATA = [
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
     tags: [{ label: "Getting Started", value: "getting_started" }],
+    date: "2023-02-6",
   },
   {
     id: 3,
@@ -52,6 +54,7 @@ export const TABLE_ROW_DATA = [
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
     tags: [{ label: "Getting Started", value: "getting_started" }],
+    date: "2023-02-7",
   },
   {
     id: 4,
@@ -59,6 +62,7 @@ export const TABLE_ROW_DATA = [
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
     tags: [{ label: "Getting Started", value: "getting_started" }],
+    date: "2023-02-8",
   },
 ];
 
