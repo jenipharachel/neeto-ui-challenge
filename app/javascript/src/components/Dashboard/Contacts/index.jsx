@@ -9,6 +9,7 @@ import MenuBar from "components/commons/MenuBar";
 
 import { TABLE_ROW_DATA, MENU_BAR_OPTIONS } from "./constants";
 import NewContactPane from "./Pane/Create";
+import EditContactPane from "./Pane/Edit";
 import Table from "./Table";
 
 const Contacts = () => {
@@ -18,6 +19,8 @@ const Contacts = () => {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [selectedContactId, setSelectedContactId] = useState(null);
   const [showNewContactPane, setShowNewContactPane] = useState(false);
+  const [showEditContact, setShowEditContact] = useState(false);
+  const [selectedContact, setSelectedContact] = useState({});
 
   const { t } = useTranslation();
 
@@ -32,6 +35,13 @@ const Contacts = () => {
   const handleDelete = id => {
     setSelectedContactId(id);
     setShowDeleteAlert(true);
+  };
+
+  const handleEditContact = contactId => {
+    const selectedEditContact =
+      contacts.find(contact => contact.id === contactId) || {};
+    setSelectedContact(selectedEditContact);
+    setShowEditContact(true);
   };
 
   return (
@@ -56,12 +66,22 @@ const Contacts = () => {
           }}
         />
         <Scrollable className="w-full">
-          <Table contacts={contacts} onDeleteContact={handleDelete} />
+          <Table
+            contacts={contacts}
+            onDeleteContact={handleDelete}
+            onEditContact={handleEditContact}
+          />
         </Scrollable>
         <NewContactPane
           createNewContact={setContacts}
           setShowPane={setShowNewContactPane}
           showPane={showNewContactPane}
+        />
+        <EditContactPane
+          contact={selectedContact}
+          setShowPane={setShowEditContact}
+          showPane={showEditContact}
+          updateEditContact={setContacts}
         />
         {showDeleteAlert && (
           <DeleteAlert
