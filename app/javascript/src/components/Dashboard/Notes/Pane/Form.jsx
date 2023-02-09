@@ -1,5 +1,6 @@
 import React from "react";
 
+import dayjs from "dayjs";
 import { Formik, Form as FormikForm } from "formik";
 import { Button, Pane, Toastr } from "neetoui";
 import { Input, Textarea, Select } from "neetoui/formik";
@@ -28,7 +29,11 @@ const Form = ({ onClose, note, isEdit, createNewNote, updateEditNote }) => {
       } else {
         createNewNote(prevNotes => [
           ...prevNotes,
-          { ...values, id: prevNotes.length + 1 },
+          {
+            ...values,
+            id: prevNotes.length + 1,
+            date: dayjs().format("YYYY-MM-DD"),
+          },
         ]);
         Toastr.success(t("note.create.success"));
       }

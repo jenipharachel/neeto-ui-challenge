@@ -37,24 +37,32 @@ export const TABLE_ROW_DATA = [
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+    tags: [{ label: "Getting Started", value: "getting_started" }],
+    date: "2023-02-5",
   },
   {
     id: 2,
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+    tags: [{ label: "Getting Started", value: "getting_started" }],
+    date: "2023-02-6",
   },
   {
     id: 3,
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+    tags: [{ label: "Getting Started", value: "getting_started" }],
+    date: "2023-02-7",
   },
   {
     id: 4,
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
+    tags: [{ label: "Getting Started", value: "getting_started" }],
+    date: "2023-02-8",
   },
 ];
 
@@ -91,3 +99,54 @@ export const TAG_SELECT_OPTIONS = [
     value: "user_experience",
   },
 ];
+
+export const MENU_BAR_OPTIONS = {
+  title: "Notes",
+  blocks: [
+    {
+      label: "All",
+      count: 200,
+      active: true,
+    },
+    {
+      label: "Users",
+      count: 80,
+    },
+    {
+      label: "Leads",
+      count: 60,
+    },
+    {
+      label: "Visitors",
+      count: 60,
+    },
+  ],
+  segments: [
+    {
+      label: "Europe",
+      count: 80,
+    },
+    {
+      label: "Middle-East",
+      count: 60,
+    },
+    {
+      label: "Asia",
+      count: 60,
+    },
+  ],
+  tags: [
+    {
+      label: "Sales",
+      count: 80,
+    },
+    {
+      label: "Finance",
+      count: 60,
+    },
+    {
+      label: "User Experience",
+      count: 60,
+    },
+  ],
+};

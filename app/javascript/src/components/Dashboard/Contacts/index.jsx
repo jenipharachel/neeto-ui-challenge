@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 
-import { Button, Toastr } from "@bigbinary/neetoui";
-import { Container, Header, Scrollable } from "@bigbinary/neetoui/layouts";
+import { Button, Toastr } from "neetoui";
+import { Container, Header, Scrollable } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import DeleteAlert from "components/commons/DeleteAlert";
+import MenuBar from "components/commons/MenuBar";
 
 import { TABLE_ROW_DATA, MENU_BAR_OPTIONS } from "./constants";
 import Table from "./Table";
-
-import MenuBar from "../../commons/MenuBar";
 
 const Contacts = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -38,7 +37,7 @@ const Contacts = () => {
       <MenuBar menuBarOptions={MENU_BAR_OPTIONS} showMenu={showMenu} />
       <Container>
         <Header
-          menuBarToggle={() => setShowMenu(!showMenu)}
+          menuBarToggle={() => setShowMenu(prevState => !prevState)}
           title="All Contacts"
           actionBlock={
             <Button
@@ -57,15 +56,15 @@ const Contacts = () => {
         <Scrollable className="w-full">
           <Table contacts={contacts} onDeleteContact={handleDelete} />
         </Scrollable>
+        {showDeleteAlert && (
+          <DeleteAlert
+            entity="Contact"
+            setSelectedId={setSelectedContactId}
+            onClose={() => setShowDeleteAlert(false)}
+            onDelete={deleteContact}
+          />
+        )}
       </Container>
-      {showDeleteAlert && (
-        <DeleteAlert
-          entity="Contact"
-          setSelectedIds={setSelectedContactId}
-          onClose={() => setShowDeleteAlert(false)}
-          onDelete={deleteContact}
-        />
-      )}
     </div>
   );
 };

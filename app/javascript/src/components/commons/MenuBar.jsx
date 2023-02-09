@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import { Plus, Search, Settings } from "@bigbinary/neeto-icons";
-import { Typography } from "@bigbinary/neetoui";
-import { MenuBar as NeetoUIMenuBar } from "@bigbinary/neetoui/layouts";
+import { Plus, Search, Settings } from "neetoicons";
+import { Typography } from "neetoui";
+import { MenuBar as NeetoUIMenuBar } from "neetoui/layouts";
 
 const MenuBar = ({ showMenu, menuBarOptions }) => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
@@ -35,6 +35,13 @@ const MenuBar = ({ showMenu, menuBarOptions }) => {
           Segments
         </Typography>
       </NeetoUIMenuBar.SubTitle>
+      {menuBarOptions.segments?.map((segment, id) => (
+        <NeetoUIMenuBar.Block
+          count={segment.count}
+          key={id}
+          label={segment.label}
+        />
+      ))}
       <NeetoUIMenuBar.Search
         collapse={isSearchCollapsed}
         onCollapse={() => setIsSearchCollapsed(true)}
@@ -61,6 +68,9 @@ const MenuBar = ({ showMenu, menuBarOptions }) => {
           Tags
         </Typography>
       </NeetoUIMenuBar.SubTitle>
+      {menuBarOptions.tags?.map((tag, id) => (
+        <NeetoUIMenuBar.Block count={tag.count} key={id} label={tag.label} />
+      ))}
     </NeetoUIMenuBar>
   );
 };

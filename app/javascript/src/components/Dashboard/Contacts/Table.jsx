@@ -1,53 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
+import { MenuHorizontal } from "neetoicons";
 import { Table as NeetoUITable } from "neetoui";
 
-import { renderContactDetails, renderText, renderDropdown } from "./utils";
+import { renderDropdown } from "components/Dashboard/utils";
+
+import { GET_COLUMN_DATA } from "./constants";
 
 const Table = ({ contacts = [], onDeleteContact }) => {
   const [pageNumber, setPageNumber] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const COLUMN_DATA = [
-    {
-      title: "Name & Role",
-      dataIndex: "name_and_role",
-      key: "name_and_role",
-      width: "30%",
-      render: renderContactDetails,
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-      width: "30%",
-      render: renderText,
-    },
-    {
-      title: "Created At",
-      dataIndex: "created_at",
-      key: "created_at",
-      width: "30%",
-      render: renderText,
-    },
-    {
-      title: "",
-      dataIndex: "icon_button",
-      key: "icon_button",
-      width: "10%",
-      render: (_, { id }) => renderDropdown({ onDeleteContact, id }),
-    },
-  ];
+  const timeoutRef = useRef(null);
+
+  const renderIcon = (_, { id }) =>
+    renderDropdown({
+      onDelete: onDeleteContact,
+      onEdit: () => {},
+      id,
+      icon: MenuHorizontal,
+    });
+
+  const columnData = GET_COLUMN_DATA(renderIcon);
+
+  useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timeoutRef.current);
+  }, []);
 
   return (
     <NeetoUITable
-      allowRowClick
       fixedHeight
+      pagination
       rowSelection
-      columnData={COLUMN_DATA}
+      columnData={columnData}
       currentPageNumber={pageNumber}
       defaultPageSize={10}
       handlePageChange={page => setPageNumber(page)}
+      isLoading={isLoading}
       rowData={contacts}
+      totalCount={contacts.length}
     />
   );
 };
