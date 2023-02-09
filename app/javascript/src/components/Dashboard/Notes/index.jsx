@@ -27,8 +27,7 @@ const Notes = () => {
   const { t } = useTranslation();
 
   const deleteNotes = () => {
-    const nonDeletedNotes = notes.filter(note => note.id !== selectedNoteId);
-    setNotes(nonDeletedNotes);
+    setNotes(prevNotes => prevNotes.filter(note => note.id !== selectedNoteId));
     Toastr.success(t("success.delete", { Entity: "Note" }));
   };
 

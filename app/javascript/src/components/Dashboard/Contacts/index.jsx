@@ -25,10 +25,9 @@ const Contacts = () => {
   const { t } = useTranslation();
 
   const deleteContact = () => {
-    const nonDeletedContacts = contacts.filter(
-      contact => contact.id !== selectedContactId
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contact.id !== selectedContactId)
     );
-    setContacts(nonDeletedContacts);
     Toastr.success(t("success.delete", { Entity: "Contact" }));
   };
 
