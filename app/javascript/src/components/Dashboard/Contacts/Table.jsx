@@ -13,6 +13,14 @@ const Table = ({ contacts = [], onDeleteContact, onEditContact }) => {
 
   const timeoutRef = useRef(null);
 
+  useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timeoutRef.current);
+  }, []);
+
   const renderIcon = (_, { id }) =>
     renderDropdown({
       onDelete: onDeleteContact,
@@ -22,14 +30,6 @@ const Table = ({ contacts = [], onDeleteContact, onEditContact }) => {
     });
 
   const columnData = GET_COLUMN_DATA(renderIcon);
-
-  useEffect(() => {
-    timeoutRef.current = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timeoutRef.current);
-  }, []);
 
   return (
     <NeetoUITable
