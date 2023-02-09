@@ -7,7 +7,7 @@ import { renderDropdown } from "components/Dashboard/utils";
 
 import { GET_COLUMN_DATA } from "./constants";
 
-const Table = ({ contacts = [], onDeleteContact }) => {
+const Table = ({ contacts = [], onDeleteContact, onEditContact }) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,7 +16,7 @@ const Table = ({ contacts = [], onDeleteContact }) => {
   const renderIcon = (_, { id }) =>
     renderDropdown({
       onDelete: onDeleteContact,
-      onEdit: () => {},
+      onEdit: onEditContact,
       id,
       icon: MenuHorizontal,
     });

@@ -4,22 +4,22 @@ import { Pane, Typography } from "neetoui";
 
 import Form from "./Form";
 
-import { NOTES_FORM_INITIAL_FORM_VALUES } from "../constants";
+import { CONTACTS_FORM_INITIAL_FORM_VALUES } from "../constants";
 
-const Create = ({ showPane, setShowPane, createNewNote }) => {
+const Create = ({ showPane, setShowPane, createNewContact }) => {
   const onClose = () => setShowPane(false);
 
   return (
     <Pane isOpen={showPane} onClose={onClose}>
       <Pane.Header>
         <Typography style="h2" weight="semibold">
-          Add New Note
+          Add New Contact
         </Typography>
       </Pane.Header>
       <Form
-        createNewNote={createNewNote}
+        contact={CONTACTS_FORM_INITIAL_FORM_VALUES}
+        createNewContact={createNewContact}
         isEdit={false}
-        note={NOTES_FORM_INITIAL_FORM_VALUES}
         onClose={onClose}
       />
     </Pane>

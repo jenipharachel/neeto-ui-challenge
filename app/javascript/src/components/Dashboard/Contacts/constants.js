@@ -1,4 +1,24 @@
+import dayjs from "dayjs";
+import * as yup from "yup";
+
 import { renderContactDetails, renderText } from "components/Dashboard/utils";
+
+export const CONTACTS_FORM_INITIAL_FORM_VALUES = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  role: "",
+};
+
+export const CONTACTS_FORM_VALIDATION_SCHEMA = yup.object().shape({
+  firstName: yup.string().required("First Name is required"),
+  lastName: yup.string().required("Last Name is required"),
+  email: yup
+    .string()
+    .email("Invalid email")
+    .required("Email Address is required"),
+  role: yup.object().required("Role is required"),
+});
 
 export const GET_COLUMN_DATA = renderIcon => [
   {
@@ -20,7 +40,7 @@ export const GET_COLUMN_DATA = renderIcon => [
     dataIndex: "created_at",
     key: "created_at",
     width: "30%",
-    render: renderText,
+    render: created_at => renderText(dayjs(created_at).format("MMM D, YYYY")),
   },
   {
     title: "",
@@ -34,147 +54,131 @@ export const GET_COLUMN_DATA = renderIcon => [
 export const TABLE_ROW_DATA = [
   {
     id: 1,
-    name_and_role: {
-      name: "Ronald Richards",
-      role: "Owner",
-    },
+    firstName: "Ronald",
+    lastName: "Richards",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 2,
-    name_and_role: {
-      name: "Jacob Jones",
-      role: "Owner",
-    },
+    firstName: "Jacob",
+    lastName: "Jones",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 3,
-    name_and_role: {
-      name: "Ronald Richards",
-      role: "Owner",
-    },
+    firstName: "Ronald",
+    lastName: "Richards",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 4,
-    name_and_role: {
-      name: "Jacob Jones",
-      role: "Owner",
-    },
+    firstName: "Jacob",
+    lastName: "Jones",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 5,
-    name_and_role: {
-      name: "Ronald Richards",
-      role: "Owner",
-    },
+    firstName: "Ronald",
+    lastName: "Richards",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 6,
-    name_and_role: {
-      name: "Jacob Jones",
-      role: "Owner",
-    },
+    firstName: "Jacob",
+    lastName: "Jones",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 7,
-    name_and_role: {
-      name: "Ronald Richards",
-      role: "Owner",
-    },
+    firstName: "Ronald",
+    lastName: "Richards",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 8,
-    name_and_role: {
-      name: "Jacob Jones",
-      role: "Owner",
-    },
+    firstName: "Jacob",
+    lastName: "Jones",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 9,
-    name_and_role: {
-      name: "Ronald Richards",
-      role: "Owner",
-    },
+    firstName: "Ronald",
+    lastName: "Richards",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 10,
-    name_and_role: {
-      name: "Jacob Jones",
-      role: "Owner",
-    },
+    firstName: "Jacob",
+    lastName: "Jones",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 11,
-    name_and_role: {
-      name: "Ronald Richards",
-      role: "Owner",
-    },
+    firstName: "Ronald",
+    lastName: "Richards",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 12,
-    name_and_role: {
-      name: "Jacob Jones",
-      role: "Owner",
-    },
+    firstName: "Jacob",
+    lastName: "Jones",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 13,
-    name_and_role: {
-      name: "Ronald Richards",
-      role: "Owner",
-    },
+    firstName: "Ronald",
+    lastName: "Richards",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 14,
-    name_and_role: {
-      name: "Jacob Jones",
-      role: "Owner",
-    },
+    firstName: "Jacob",
+    lastName: "Jones",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 15,
-    name_and_role: {
-      name: "Ronald Richards",
-      role: "Owner",
-    },
+    firstName: "Ronald",
+    lastName: "Richards",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
   {
     id: 16,
-    name_and_role: {
-      name: "Jacob Jones",
-      role: "Owner",
-    },
+    firstName: "Jacob",
+    lastName: "Jones",
+    role: { label: "Owner", value: "owner" },
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    created_at: "2023-2-5",
   },
 ];
 
@@ -200,3 +204,22 @@ export const MENU_BAR_OPTIONS = {
     },
   ],
 };
+
+export const ROLE_SELECT_OPTIONS = [
+  {
+    label: "Owner",
+    value: "owner",
+  },
+  {
+    label: "Users",
+    value: "users",
+  },
+  {
+    label: "Leads",
+    value: "leads",
+  },
+  {
+    label: "Visitors",
+    value: "visitors",
+  },
+];
