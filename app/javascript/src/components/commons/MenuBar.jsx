@@ -68,12 +68,8 @@ const MenuBar = ({ showMenu, menuBarOptions }) => {
           Tags
         </Typography>
       </NeetoUIMenuBar.SubTitle>
-      {menuBarOptions.tags?.map((segment, id) => (
-        <NeetoUIMenuBar.Block
-          count={segment.count}
-          key={id}
-          label={segment.label}
-        />
+      {menuBarOptions.tags?.map((tag, id) => (
+        <NeetoUIMenuBar.Block count={tag.count} key={id} label={tag.label} />
       ))}
     </NeetoUIMenuBar>
   );
