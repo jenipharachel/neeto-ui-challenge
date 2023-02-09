@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Avatar, Dropdown, Typography } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 const { Menu, MenuItem } = Dropdown;
 
@@ -26,13 +27,20 @@ export const renderText = text => (
   </Typography>
 );
 
-export const renderDropdown = ({ onDelete, onEdit, id, icon, buttonProps }) => (
-  <Dropdown buttonProps={buttonProps} buttonStyle="text" icon={icon}>
-    <Menu>
-      <MenuItem.Button onClick={() => onEdit(id)}>Edit</MenuItem.Button>
-      <MenuItem.Button style="danger" onClick={() => onDelete(id)}>
-        Delete
-      </MenuItem.Button>
-    </Menu>
-  </Dropdown>
-);
+export const renderDropdown = ({ onDelete, onEdit, id, icon, buttonProps }) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t } = useTranslation();
+
+  return (
+    <Dropdown buttonProps={buttonProps} buttonStyle="text" icon={icon}>
+      <Menu>
+        <MenuItem.Button onClick={() => onEdit(id)}>
+          {t("button.edit")}
+        </MenuItem.Button>
+        <MenuItem.Button style="danger" onClick={() => onDelete(id)}>
+          {t("button.delete")}
+        </MenuItem.Button>
+      </Menu>
+    </Dropdown>
+  );
+};

@@ -8,7 +8,9 @@
     "add": "Add {{entity}}",
     "cancel": "Cancel",
     "update": "Update",
-    "save": "Save changes"
+    "save": "Save changes",
+    "edit": "Edit",
+    "delete": "Delete"
   },
   "title": {
     "add": "Add New {{entity}}",
