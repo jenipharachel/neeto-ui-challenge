@@ -1,6 +1,6 @@
 import { renderContactDetails, renderText } from "components/Dashboard/utils";
 
-export const COLUMN_DATA = renderIcon => [
+export const GET_COLUMN_DATA = renderIcon => [
   {
     title: "Name & Role",
     dataIndex: "name_and_role",

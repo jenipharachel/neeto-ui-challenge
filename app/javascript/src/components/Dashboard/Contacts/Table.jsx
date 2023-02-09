@@ -5,7 +5,7 @@ import { Table as NeetoUITable } from "neetoui";
 
 import { renderDropdown } from "components/Dashboard/utils";
 
-import { COLUMN_DATA } from "./constants";
+import { GET_COLUMN_DATA } from "./constants";
 
 const Table = ({ contacts = [], onDeleteContact }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -21,7 +21,7 @@ const Table = ({ contacts = [], onDeleteContact }) => {
       icon: MenuHorizontal,
     });
 
-  const columnData = COLUMN_DATA(renderIcon);
+  const columnData = GET_COLUMN_DATA(renderIcon);
 
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
