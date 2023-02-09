@@ -1,24 +1,7 @@
 {
-  "note": {
-    "delete": {
-      "success": "Note has been deleted successfully!"
-    },
-    "create": {
-      "success": "Note has been added successfully"
-    },
-    "update": {
-      "success": "Note has been updated successfully"
-    }
-  },
-  "contact": {
-    "delete": {
-      "success": "Contact deleted successfully."
-    },
-    "create": {
-      "success": "Contact added successfully."
-    },
-    "update": {
-      "success": "Contact updated successfully"
-    }
+  "success": {
+    "delete": "{{Entity}} deleted successfully",
+    "create": "{{Entity}} added successfully",
+    "update": "{{Entity}} updated successfully"
   }
 }

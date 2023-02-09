@@ -29,7 +29,7 @@ const Contacts = () => {
       contact => contact.id !== selectedContactId
     );
     setContacts(nonDeletedContacts);
-    Toastr.success(t("contact.delete.success"));
+    Toastr.success(t("success.delete", { Entity: "Contact" }));
   };
 
   const handleDelete = id => {

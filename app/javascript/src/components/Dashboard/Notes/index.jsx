@@ -29,7 +29,7 @@ const Notes = () => {
   const deleteNotes = () => {
     const nonDeletedNotes = notes.filter(note => note.id !== selectedNoteId);
     setNotes(nonDeletedNotes);
-    Toastr.success(t("note.delete.success"));
+    Toastr.success(t("success.delete", { Entity: "Note" }));
   };
 
   const handleDeleteNote = noteId => {

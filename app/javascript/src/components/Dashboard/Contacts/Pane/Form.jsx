@@ -30,7 +30,7 @@ const Form = ({
 
           return [...filteredContacts, { ...values, id: contact.id }];
         });
-        Toastr.success(t("contact.update.success"));
+        Toastr.success(t("success.update", { Entity: "Contact" }));
       } else {
         createNewContact(prevContacts => [
           ...prevContacts,
@@ -40,7 +40,7 @@ const Form = ({
             created_at: dayjs().format("YYYY-MM-DD"),
           },
         ]);
-        Toastr.success(t("contact.create.success"));
+        Toastr.success(t("success.create", { Entity: "Contact" }));
       }
       onClose();
     } catch (err) {

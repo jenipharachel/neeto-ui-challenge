@@ -25,7 +25,7 @@ const Form = ({ onClose, note, isEdit, createNewNote, updateNote }) => {
 
           return [...filteredNotes, { ...values, id: note.id }];
         });
-        Toastr.success(t("note.update.success"));
+        Toastr.success(t("success.update", { Entity: "Note" }));
       } else {
         createNewNote(prevNotes => [
           ...prevNotes,
@@ -35,7 +35,7 @@ const Form = ({ onClose, note, isEdit, createNewNote, updateNote }) => {
             date: dayjs().format("YYYY-MM-DD"),
           },
         ]);
-        Toastr.success(t("note.create.success"));
+        Toastr.success(t("success.create", { Entity: "Note" }));
       }
       onClose();
     } catch (err) {
