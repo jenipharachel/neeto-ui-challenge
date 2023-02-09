@@ -9,7 +9,7 @@ const Table = ({
   selectedNoteIds,
   setSelectedNoteIds,
   notes = [],
-  updateEditNote,
+  updateNote,
 }) => {
   const [showEditNote, setShowEditNote] = useState(false);
   const [selectedNote, setSelectedNote] = useState({});
@@ -34,7 +34,7 @@ const Table = ({
         note={selectedNote}
         setShowPane={setShowEditNote}
         showPane={showEditNote}
-        updateEditNote={updateEditNote}
+        updateNote={updateNote}
       />
     </>
   );

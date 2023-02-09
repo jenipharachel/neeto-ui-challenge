@@ -93,7 +93,7 @@ const Notes = () => {
           note={selectedNote}
           setShowPane={setShowEditNote}
           showPane={showEditNote}
-          updateEditNote={setNotes}
+          updateNote={setNotes}
         />
         {showDeleteAlert && (
           <DeleteAlert

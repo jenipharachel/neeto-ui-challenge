@@ -16,14 +16,14 @@ const Form = ({
   contact,
   isEdit,
   createNewContact,
-  updateEditContact,
+  updateContact,
 }) => {
   const { t } = useTranslation();
 
   const handleSubmit = async values => {
     try {
       if (isEdit) {
-        updateEditContact(prevContacts => {
+        updateContact(prevContacts => {
           const filteredContacts = prevContacts.filter(
             prevContact => prevContact.id !== contact.id
           );

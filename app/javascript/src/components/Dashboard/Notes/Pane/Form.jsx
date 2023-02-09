@@ -12,13 +12,13 @@ import {
   TAG_SELECT_OPTIONS,
 } from "../constants";
 
-const Form = ({ onClose, note, isEdit, createNewNote, updateEditNote }) => {
+const Form = ({ onClose, note, isEdit, createNewNote, updateNote }) => {
   const { t } = useTranslation();
 
   const handleSubmit = async values => {
     try {
       if (isEdit) {
-        updateEditNote(prevNotes => {
+        updateNote(prevNotes => {
           const filteredNotes = prevNotes.filter(
             prevNote => prevNote.id !== note.id
           );

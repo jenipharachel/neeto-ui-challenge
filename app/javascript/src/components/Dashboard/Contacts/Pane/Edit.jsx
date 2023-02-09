@@ -4,7 +4,7 @@ import { Pane, Typography } from "neetoui";
 
 import Form from "./Form";
 
-const Edit = ({ showPane, setShowPane, contact, updateEditContact }) => {
+const Edit = ({ showPane, setShowPane, contact, updateContact }) => {
   const onClose = () => setShowPane(false);
 
   return (
@@ -17,7 +17,7 @@ const Edit = ({ showPane, setShowPane, contact, updateEditContact }) => {
       <Form
         isEdit
         contact={contact}
-        updateEditContact={updateEditContact}
+        updateContact={updateContact}
         onClose={onClose}
       />
     </Pane>

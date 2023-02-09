@@ -81,7 +81,7 @@ const Contacts = () => {
           contact={selectedContact}
           setShowPane={setShowEditContact}
           showPane={showEditContact}
-          updateEditContact={setContacts}
+          updateContact={setContacts}
         />
         {showDeleteAlert && (
           <DeleteAlert
