@@ -13,7 +13,10 @@ export const CONTACTS_FORM_INITIAL_FORM_VALUES = {
 export const CONTACTS_FORM_VALIDATION_SCHEMA = yup.object().shape({
   firstName: yup.string().required("First Name is required"),
   lastName: yup.string().required("Last Name is required"),
-  email: yup.string().required("Email Address is required"),
+  email: yup
+    .string()
+    .email("Invalid email")
+    .required("Email Address is required"),
   role: yup.object().required("Role is required"),
 });
 
