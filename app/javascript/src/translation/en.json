@@ -12,7 +12,13 @@
   },
   "contact": {
     "delete": {
-      "success": "Contact has been deleted successfully!"
+      "success": "Contact deleted successfully."
+    },
+    "create": {
+      "success": "Contact added successfully."
+    },
+    "update": {
+      "success": "Contact updated successfully"
     }
   }
 }
