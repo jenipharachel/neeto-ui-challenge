@@ -13,7 +13,7 @@ const Create = ({ showPane, setShowPane, createNewNote }) => {
     <Pane isOpen={showPane} onClose={onClose}>
       <Pane.Header>
         <Typography style="h2" weight="semibold">
-          Create a new note
+          Add New Note
         </Typography>
       </Pane.Header>
       <Form
