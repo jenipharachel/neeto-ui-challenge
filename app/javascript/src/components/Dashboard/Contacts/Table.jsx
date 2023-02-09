@@ -5,7 +5,7 @@ import { Table as NeetoUITable } from "neetoui";
 
 import { renderDropdown } from "components/Dashboard/utils";
 
-import { GET_COLUMN_DATA } from "./constants";
+import { getColumnData } from "./utils";
 
 const Table = ({ contacts = [], onDeleteContact, onEditContact }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -29,7 +29,7 @@ const Table = ({ contacts = [], onDeleteContact, onEditContact }) => {
       icon: MenuHorizontal,
     });
 
-  const columnData = GET_COLUMN_DATA(renderIcon);
+  const columnData = getColumnData(renderIcon);
 
   return (
     <NeetoUITable
