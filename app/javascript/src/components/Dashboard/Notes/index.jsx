@@ -38,7 +38,7 @@ const Notes = () => {
   };
 
   const handleEditNote = noteId => {
-    const selectedEditNote = notes.find(note => note.id === noteId) || {};
+    const selectedEditNote = notes.find(note => note.id === noteId);
     setSelectedNote(selectedEditNote);
     setShowEditNote(true);
   };
