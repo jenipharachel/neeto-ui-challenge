@@ -15,7 +15,7 @@ import {
 const Form = ({ onClose, note, isEdit, createNewNote, updateNote }) => {
   const { t } = useTranslation();
 
-  const handleSubmit = async values => {
+  const handleSubmit = values => {
     try {
       if (isEdit) {
         updateNote(prevNotes => {

@@ -20,7 +20,7 @@ const Form = ({
 }) => {
   const { t } = useTranslation();
 
-  const handleSubmit = async values => {
+  const handleSubmit = values => {
     try {
       if (isEdit) {
         updateContact(prevContacts => {
