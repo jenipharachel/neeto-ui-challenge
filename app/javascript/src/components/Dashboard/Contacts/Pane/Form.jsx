@@ -30,7 +30,7 @@ const Form = ({
 
           return [...filteredContacts, { ...values, id: contact.id }];
         });
-        Toastr.success(t("success.update", { Entity: "Contact" }));
+        Toastr.success(t("success.update", { entity: "Contact" }));
       } else {
         createNewContact(prevContacts => [
           ...prevContacts,
@@ -40,7 +40,7 @@ const Form = ({
             created_at: dayjs().format("YYYY-MM-DD"),
           },
         ]);
-        Toastr.success(t("success.create", { Entity: "Contact" }));
+        Toastr.success(t("success.create", { entity: "Contact" }));
       }
       onClose();
     } catch (err) {
@@ -61,45 +61,44 @@ const Form = ({
               <Input
                 required
                 className="mr-6 w-full flex-grow-0"
-                label="First Name"
+                label={t("form.label.firstName")}
                 name="firstName"
-                placeholder="Enter first name"
+                placeholder={t("form.placeholder.firstName")}
               />
               <Input
                 required
                 className="w-full flex-grow-0"
-                label="Last Name"
+                label={t("form.label.lastName")}
                 name="lastName"
-                placeholder="Enter last name"
+                placeholder={t("form.placeholder.lastName")}
               />
             </div>
             <Input
               required
               className="w-full flex-grow-0"
-              label="Email Address"
+              label={t("form.label.email")}
               name="email"
-              placeholder="Enter your email address"
+              placeholder={t("form.placeholder.email")}
             />
             <Select
               required
               className="w-full flex-grow-0"
-              label="Role"
+              label={t("form.label.role")}
               name="role"
               options={ROLE_SELECT_OPTIONS}
-              placeholder="Select Role"
             />
           </Pane.Body>
           <Pane.Footer>
             <Button
               className="mr-3"
               disabled={isSubmitting}
-              label={isEdit ? "Update" : "Save changes"}
+              label={isEdit ? t("button.update") : t("button.save")}
               loading={isSubmitting}
               style="primary"
               type="submit"
             />
             <Button
-              label="Cancel"
+              label={t("button.cancel")}
               style="text"
               type="reset"
               onClick={onClose}

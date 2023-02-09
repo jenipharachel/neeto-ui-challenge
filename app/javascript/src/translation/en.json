@@ -1,7 +1,42 @@
 {
   "success": {
-    "delete": "{{Entity}} deleted successfully",
-    "create": "{{Entity}} added successfully",
-    "update": "{{Entity}} updated successfully"
+    "delete": "{{entity}} deleted successfully",
+    "create": "{{entity}} added successfully",
+    "update": "{{entity}} updated successfully"
+  },
+  "button": {
+    "add": "Add {{entity}}",
+    "cancel": "Cancel",
+    "update": "Update",
+    "save": "Save changes"
+  },
+  "title": {
+    "add": "Add New {{entity}}",
+    "edit": "Edit {{entity}}",
+    "all": "All {{entity}}",
+    "emptyNotes": "Looks like you don't have any notes!"
+  },
+  "subtitle": {
+    "emptyNotes": "Add your notes to send customized emails to them."
+  },
+  "form": {
+    "label": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "role": "Role",
+      "title": "Title",
+      "description": "Description",
+      "contact": "Assigned Contact",
+      "tags": "Tags"
+    },
+    "placeholder": {
+      "firstName": "Enter first name",
+      "lastName": "Enter last name",
+      "email": "Enter your email address",
+      "title": "Enter note title",
+      "description": "Enter note description",
+      "search": "Search Name, Email, Phone Number, Ect."
+    }
   }
 }

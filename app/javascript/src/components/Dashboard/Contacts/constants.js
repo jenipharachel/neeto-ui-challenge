@@ -4,7 +4,7 @@ export const CONTACTS_FORM_INITIAL_FORM_VALUES = {
   firstName: "",
   lastName: "",
   email: "",
-  role: "",
+  role: { label: "", value: "" },
 };
 
 export const CONTACTS_FORM_VALIDATION_SCHEMA = yup.object().shape({
@@ -14,7 +14,14 @@ export const CONTACTS_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .string()
     .email("Invalid email")
     .required("Email Address is required"),
-  role: yup.object().required("Role is required"),
+  role: yup
+    .object()
+    .shape({
+      label: yup.string(),
+      value: yup.string(),
+    })
+    .required("Role is required")
+    .nullable(),
 });
 
 export const TABLE_ROW_DATA = [

@@ -25,7 +25,7 @@ const Form = ({ onClose, note, isEdit, createNewNote, updateNote }) => {
 
           return [...filteredNotes, { ...values, id: note.id }];
         });
-        Toastr.success(t("success.update", { Entity: "Note" }));
+        Toastr.success(t("success.update", { entity: "Note" }));
       } else {
         createNewNote(prevNotes => [
           ...prevNotes,
@@ -35,7 +35,7 @@ const Form = ({ onClose, note, isEdit, createNewNote, updateNote }) => {
             date: dayjs().format("YYYY-MM-DD"),
           },
         ]);
-        Toastr.success(t("success.create", { Entity: "Note" }));
+        Toastr.success(t("success.create", { entity: "Note" }));
       }
       onClose();
     } catch (err) {
@@ -55,47 +55,45 @@ const Form = ({ onClose, note, isEdit, createNewNote, updateNote }) => {
             <Input
               required
               className="w-full flex-grow-0"
-              label="Title"
+              label={t("form.label.title")}
               name="title"
-              placeholder="Enter note title"
+              placeholder={t("form.placeholder.title")}
             />
             <Textarea
               required
               className="w-full flex-grow-0"
-              label="Description"
+              label={t("form.label.description")}
               name="description"
-              placeholder="Enter note description"
+              placeholder={t("form.placeholder.description")}
               rows={8}
             />
             <Select
               required
               className="w-full flex-grow-0"
-              label="Assigned Contact"
+              label={t("form.label.contact")}
               name="contact"
               options={CONTACT_SELECT_OPTIONS}
-              placeholder="Select Contact"
             />
             <Select
               isMulti
               required
               className="w-full flex-grow-0"
-              label="Tags"
+              label={t("form.label.tags")}
               name="tags"
               options={TAG_SELECT_OPTIONS}
-              placeholder="Select Tags"
             />
           </Pane.Body>
           <Pane.Footer>
             <Button
               className="mr-3"
               disabled={isSubmitting}
-              label={isEdit ? "Update" : "Save changes"}
+              label={isEdit ? t("button.update") : t("button.save")}
               loading={isSubmitting}
               style="primary"
               type="submit"
             />
             <Button
-              label="Cancel"
+              label={t("button.cancel")}
               style="text"
               type="reset"
               onClick={onClose}
