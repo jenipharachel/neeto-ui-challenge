@@ -8,6 +8,7 @@ import DeleteAlert from "components/commons/DeleteAlert";
 import MenuBar from "components/commons/MenuBar";
 
 import { TABLE_ROW_DATA, MENU_BAR_OPTIONS } from "./constants";
+import NewContactPane from "./Pane/Create";
 import Table from "./Table";
 
 const Contacts = () => {
@@ -16,14 +17,15 @@ const Contacts = () => {
   const [contacts, setContacts] = useState(TABLE_ROW_DATA);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [selectedContactId, setSelectedContactId] = useState(null);
+  const [showNewContactPane, setShowNewContactPane] = useState(false);
 
   const { t } = useTranslation();
 
   const deleteContact = () => {
-    const nonDeletedNotes = contacts.filter(
+    const nonDeletedContacts = contacts.filter(
       contact => contact.id !== selectedContactId
     );
-    setContacts(nonDeletedNotes);
+    setContacts(nonDeletedContacts);
     Toastr.success(t("contact.delete.success"));
   };
 
@@ -44,7 +46,7 @@ const Contacts = () => {
               icon="ri-add-line"
               label="Add Contact"
               size="small"
-              onClick={() => {}}
+              onClick={() => setShowNewContactPane(true)}
             />
           }
           searchProps={{
@@ -56,6 +58,11 @@ const Contacts = () => {
         <Scrollable className="w-full">
           <Table contacts={contacts} onDeleteContact={handleDelete} />
         </Scrollable>
+        <NewContactPane
+          createNewContact={setContacts}
+          setShowPane={setShowNewContactPane}
+          showPane={showNewContactPane}
+        />
         {showDeleteAlert && (
           <DeleteAlert
             entity="Contact"
