@@ -4,8 +4,8 @@ import { Avatar, Dropdown, Typography } from "neetoui";
 
 const { Menu, MenuItem } = Dropdown;
 
-export const renderContactDetails = nameAndRole => {
-  const { name, role } = nameAndRole;
+export const renderContactDetails = (_, { firstName, lastName, role }) => {
+  const name = `${firstName} ${lastName}`;
 
   return (
     <div className="flex flex-row items-center">
@@ -13,7 +13,7 @@ export const renderContactDetails = nameAndRole => {
       <span>
         <Typography style="h5">{name}</Typography>
         <Typography className="neeto-ui-text-gray-600" style="body3">
-          {role}
+          {role.label}
         </Typography>
       </span>
     </div>
