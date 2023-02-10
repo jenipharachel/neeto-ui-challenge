@@ -65,7 +65,7 @@ const Form = ({ onClose, note, isEdit, createNewNote, updateNote }) => {
               label={t("form.label.description")}
               name="description"
               placeholder={t("form.placeholder.description")}
-              rows={8}
+              rows={1}
             />
             <Select
               required
