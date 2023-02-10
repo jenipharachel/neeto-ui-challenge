@@ -77,8 +77,8 @@ const MenuBar = ({ showMenu, menuBarOptions }) => {
 };
 
 MenuBar.propTypes = {
-  showMenu: PropTypes.func,
-  menuBarOptions: PropTypes.array,
+  showMenu: PropTypes.bool,
+  menuBarOptions: PropTypes.object,
 };
 
 export default MenuBar;

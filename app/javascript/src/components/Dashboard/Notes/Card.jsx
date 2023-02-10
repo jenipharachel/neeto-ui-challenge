@@ -3,6 +3,7 @@ import React from "react";
 import dayjs from "dayjs";
 import { MenuVertical, Clock } from "neetoicons";
 import { Typography, Tooltip, Avatar } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import { renderDropdown } from "components/Dashboard/utils";
 import { useUserState } from "contexts/user";
@@ -19,6 +20,8 @@ const Badge = ({ tag, id }) => (
 );
 
 const Card = ({ note, onDelete, onEdit }) => {
+  const { t } = useTranslation();
+
   const {
     user: { first_name, last_name },
   } = useUserState();
@@ -35,6 +38,7 @@ const Card = ({ note, onDelete, onEdit }) => {
           id: note.id,
           icon: MenuVertical,
           buttonProps: { className: "-mt-2" },
+          t,
         })}
       </div>
       <Typography className="neeto-ui-text-gray-600" style="body2">
