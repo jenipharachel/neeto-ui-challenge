@@ -3,14 +3,21 @@ import * as yup from "yup";
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
-  contact: "",
+  contact: null,
   tags: [],
 };
 
 export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
   title: yup.string().required("Title is required"),
   description: yup.string().required("Description is required"),
-  contact: yup.object().required("Assigned Contact is required"),
+  contact: yup
+    .object()
+    .shape({
+      label: yup.string(),
+      value: yup.string(),
+    })
+    .nullable()
+    .required("Assigned Contact is required"),
   tags: yup
     .array(yup.object({ label: yup.string(), value: yup.string() }))
     .min(1, "Tags is required"),

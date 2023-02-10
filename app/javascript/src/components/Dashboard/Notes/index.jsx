@@ -27,9 +27,8 @@ const Notes = () => {
   const { t } = useTranslation();
 
   const deleteNotes = () => {
-    const nonDeletedNotes = notes.filter(note => note.id !== selectedNoteId);
-    setNotes(nonDeletedNotes);
-    Toastr.success(t("note.delete.success"));
+    setNotes(prevNotes => prevNotes.filter(note => note.id !== selectedNoteId));
+    Toastr.success(t("success.delete", { entity: "Note" }));
   };
 
   const handleDeleteNote = noteId => {
@@ -38,7 +37,7 @@ const Notes = () => {
   };
 
   const handleEditNote = noteId => {
-    const selectedEditNote = notes.find(note => note.id === noteId) || {};
+    const selectedEditNote = notes.find(note => note.id === noteId);
     setSelectedNote(selectedEditNote);
     setShowEditNote(true);
   };
@@ -49,11 +48,11 @@ const Notes = () => {
       <Container>
         <Header
           menuBarToggle={() => setShowMenu(prevState => !prevState)}
-          title="All Notes"
+          title={t("title.all", { entity: "Note" })}
           actionBlock={
             <Button
               icon="ri-add-line"
-              label="Add Note"
+              label={t("button.add", { entity: "Note" })}
               size="small"
               onClick={() => setShowNewNotePane(true)}
             />
@@ -61,7 +60,7 @@ const Notes = () => {
           searchProps={{
             value: searchTerm,
             onChange: e => setSearchTerm(e.target.value),
-            placeholder: "Search Name, Email, Phone Number, Ect.",
+            placeholder: t("form.placeholder.search"),
           }}
         />
         {notes.length ? (
@@ -79,9 +78,9 @@ const Notes = () => {
           <EmptyState
             image={EmptyNotesListImage}
             primaryAction={() => setShowNewNotePane(true)}
-            primaryActionLabel="Add new note"
-            subtitle="Add your notes to send customized emails to them."
-            title="Looks like you don't have any notes!"
+            primaryActionLabel={t("title.add", { entity: "Note" })}
+            subtitle={t("subtitle.emptyNotes")}
+            title={t("title.emptyNotes")}
           />
         )}
         <NewNotePane
@@ -93,7 +92,7 @@ const Notes = () => {
           note={selectedNote}
           setShowPane={setShowEditNote}
           showPane={showEditNote}
-          updateEditNote={setNotes}
+          updateNote={setNotes}
         />
         {showDeleteAlert && (
           <DeleteAlert

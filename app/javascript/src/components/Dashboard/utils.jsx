@@ -26,12 +26,21 @@ export const renderText = text => (
   </Typography>
 );
 
-export const renderDropdown = ({ onDelete, onEdit, id, icon, buttonProps }) => (
+export const renderDropdown = ({
+  onDelete,
+  onEdit,
+  id,
+  icon,
+  buttonProps,
+  t,
+}) => (
   <Dropdown buttonProps={buttonProps} buttonStyle="text" icon={icon}>
     <Menu>
-      <MenuItem.Button onClick={() => onEdit(id)}>Edit</MenuItem.Button>
+      <MenuItem.Button onClick={() => onEdit(id)}>
+        {t("button.edit")}
+      </MenuItem.Button>
       <MenuItem.Button style="danger" onClick={() => onDelete(id)}>
-        Delete
+        {t("button.delete")}
       </MenuItem.Button>
     </Menu>
   </Dropdown>

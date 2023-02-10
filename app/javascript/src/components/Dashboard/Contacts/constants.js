@@ -1,13 +1,10 @@
-import dayjs from "dayjs";
 import * as yup from "yup";
-
-import { renderContactDetails, renderText } from "components/Dashboard/utils";
 
 export const CONTACTS_FORM_INITIAL_FORM_VALUES = {
   firstName: "",
   lastName: "",
   email: "",
-  role: "",
+  role: null,
 };
 
 export const CONTACTS_FORM_VALIDATION_SCHEMA = yup.object().shape({
@@ -17,39 +14,15 @@ export const CONTACTS_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .string()
     .email("Invalid email")
     .required("Email Address is required"),
-  role: yup.object().required("Role is required"),
+  role: yup
+    .object()
+    .shape({
+      label: yup.string(),
+      value: yup.string(),
+    })
+    .nullable()
+    .required("Role is required"),
 });
-
-export const GET_COLUMN_DATA = renderIcon => [
-  {
-    title: "Name & Role",
-    dataIndex: "name_and_role",
-    key: "name_and_role",
-    width: "30%",
-    render: renderContactDetails,
-  },
-  {
-    title: "Email",
-    dataIndex: "email",
-    key: "email",
-    width: "30%",
-    render: renderText,
-  },
-  {
-    title: "Created At",
-    dataIndex: "created_at",
-    key: "created_at",
-    width: "30%",
-    render: created_at => renderText(dayjs(created_at).format("MMM D, YYYY")),
-  },
-  {
-    title: "",
-    dataIndex: "icon_button",
-    key: "icon_button",
-    width: "10%",
-    render: renderIcon,
-  },
-];
 
 export const TABLE_ROW_DATA = [
   {

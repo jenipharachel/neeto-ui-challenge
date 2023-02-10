@@ -25,11 +25,10 @@ const Contacts = () => {
   const { t } = useTranslation();
 
   const deleteContact = () => {
-    const nonDeletedContacts = contacts.filter(
-      contact => contact.id !== selectedContactId
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contact.id !== selectedContactId)
     );
-    setContacts(nonDeletedContacts);
-    Toastr.success(t("contact.delete.success"));
+    Toastr.success(t("success.delete", { entity: "Contact" }));
   };
 
   const handleDelete = id => {
@@ -50,11 +49,11 @@ const Contacts = () => {
       <Container>
         <Header
           menuBarToggle={() => setShowMenu(prevState => !prevState)}
-          title="All Contacts"
+          title={t("title.all", { entity: "Contacts" })}
           actionBlock={
             <Button
               icon="ri-add-line"
-              label="Add Contact"
+              label={t("button.add", { entity: "Contact" })}
               size="small"
               onClick={() => setShowNewContactPane(true)}
             />
@@ -62,7 +61,7 @@ const Contacts = () => {
           searchProps={{
             value: searchString,
             onChange: e => setSearchString(e.target.value),
-            placeholder: "Search Name, Email, Phone Number, Ect.",
+            placeholder: t("form.placeholder.search"),
           }}
         />
         <Scrollable className="w-full">
@@ -81,7 +80,7 @@ const Contacts = () => {
           contact={selectedContact}
           setShowPane={setShowEditContact}
           showPane={showEditContact}
-          updateEditContact={setContacts}
+          updateContact={setContacts}
         />
         {showDeleteAlert && (
           <DeleteAlert

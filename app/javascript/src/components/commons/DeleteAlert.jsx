@@ -5,7 +5,7 @@ import { Alert } from "neetoui";
 const DeleteAlert = ({ onClose, onDelete, entity, setSelectedId }) => {
   const [deleting, setDeleting] = useState(false);
 
-  const handleDelete = async () => {
+  const handleDelete = () => {
     try {
       setDeleting(true);
       onDelete();

@@ -1,24 +1,44 @@
 {
-  "note": {
-    "delete": {
-      "success": "Note has been deleted successfully!"
-    },
-    "create": {
-      "success": "Note has been added successfully"
-    },
-    "update": {
-      "success": "Note has been updated successfully"
-    }
+  "success": {
+    "delete": "{{entity}} deleted successfully",
+    "create": "{{entity}} added successfully",
+    "update": "{{entity}} updated successfully"
   },
-  "contact": {
-    "delete": {
-      "success": "Contact deleted successfully."
+  "button": {
+    "add": "Add {{entity}}",
+    "cancel": "Cancel",
+    "update": "Update",
+    "save": "Save changes",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "title": {
+    "add": "Add New {{entity}}",
+    "edit": "Edit {{entity}}",
+    "all": "All {{entity}}",
+    "emptyNotes": "Looks like you don't have any notes!"
+  },
+  "subtitle": {
+    "emptyNotes": "Add your notes to send customized emails to them."
+  },
+  "form": {
+    "label": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "role": "Role",
+      "title": "Title",
+      "description": "Description",
+      "contact": "Assigned Contact",
+      "tags": "Tags"
     },
-    "create": {
-      "success": "Contact added successfully."
-    },
-    "update": {
-      "success": "Contact updated successfully"
+    "placeholder": {
+      "firstName": "Enter first name",
+      "lastName": "Enter last name",
+      "email": "Enter your email address",
+      "title": "Enter note title",
+      "description": "Enter note description",
+      "search": "Search Name, Email, Phone Number, Ect."
     }
   }
 }

@@ -2,10 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 
 import { MenuHorizontal } from "neetoicons";
 import { Table as NeetoUITable } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import { renderDropdown } from "components/Dashboard/utils";
 
-import { GET_COLUMN_DATA } from "./constants";
+import { getColumnData } from "./utils";
 
 const Table = ({ contacts = [], onDeleteContact, onEditContact }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -13,15 +14,7 @@ const Table = ({ contacts = [], onDeleteContact, onEditContact }) => {
 
   const timeoutRef = useRef(null);
 
-  const renderIcon = (_, { id }) =>
-    renderDropdown({
-      onDelete: onDeleteContact,
-      onEdit: onEditContact,
-      id,
-      icon: MenuHorizontal,
-    });
-
-  const columnData = GET_COLUMN_DATA(renderIcon);
+  const { t } = useTranslation();
 
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
@@ -30,6 +23,17 @@ const Table = ({ contacts = [], onDeleteContact, onEditContact }) => {
 
     return () => clearTimeout(timeoutRef.current);
   }, []);
+
+  const renderIcon = (_, { id }) =>
+    renderDropdown({
+      onDelete: onDeleteContact,
+      onEdit: onEditContact,
+      id,
+      icon: MenuHorizontal,
+      t,
+    });
+
+  const columnData = getColumnData(renderIcon);
 
   return (
     <NeetoUITable
